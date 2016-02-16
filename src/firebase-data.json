@@ -1,29 +1,32 @@
 {
   "myPolls": {
     "homer": {
-      "-KAe-Z0iCXKXoAFLAmxo": {
-        "createdAt": 1455624962205
-      },
-      "-KAe1LOnHKeeBZuPKfag": {
-        "createdAt": 1455625430675
-      },
-      "-KAe1McUak5eMz-wAE8O": {
-        "createdAt": 1455625435708
+      "-KAf8G3In-w-six859Gr": {
+        "createdAt": 1455644021037
       }
     }
   },
   "polls": {
-    "-KAe-Z0iCXKXoAFLAmxo": {
-      "createdAt": 1455624962168,
-      "title": "Esto es un jaleo"
-    },
-    "-KAe1LOnHKeeBZuPKfag": {
-      "createdAt": 1455625430656,
-      "title": "c"
-    },
-    "-KAe1McUak5eMz-wAE8O": {
-      "createdAt": 1455625435690,
-      "title": "d"
+    "-KAf8G3In-w-six859Gr": {
+      "createdAt": 1455644021021,
+      "entries": {
+        "-KAf8JN31tflpX8FbzAP": {
+          "createdAt": 1455644034573,
+          "title": "Donut",
+          "votes": 0
+        },
+        "-KAf8KH1rHCjwM9FeHZD": {
+          "createdAt": 1455644038280,
+          "title": "Pizza",
+          "votes": 0
+        },
+        "-KAf9dq8aDHjDOVChX_j": {
+          "createdAt": 1455644384656,
+          "title": "Pasta",
+          "votes": 0
+        }
+      },
+      "title": "Favourite Food"
     }
   }
 }

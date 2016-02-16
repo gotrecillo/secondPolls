@@ -4,6 +4,9 @@ export default class EntryList extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      addDisabled: true
+    };
   }
 
   handleAddButtonClick() {
@@ -16,6 +19,21 @@ export default class EntryList extends Component {
 
   handleRemoveButtonClick(idPoll, idEntry) {
     this.props.removeEntry(idPoll, idEntry);
+  }
+
+  handleOnChangeTitle() {
+    const node = this.refs.title;
+    const title =  node.value.trim();
+    this.setState({
+      addDisabled: title.length === 0
+    });
+  }
+
+  handleOnTitleKeyDown(event) {
+    const ENTER_KEY = 13;
+    if (event.keyCode === ENTER_KEY && !this.state.addDisabled) {
+      this.handleAddButtonClick();
+    }
   }
 
   render() {
@@ -36,9 +54,9 @@ export default class EntryList extends Component {
             }
          </ul>
           <div className="input-group">
-            <input type="text" className="form-control" placeholder="Entry Title" ref="title"/>
+            <input type="text" className="form-control" placeholder="Entry Title" ref="title" onKeyDown={e => this.handleOnTitleKeyDown(e)} onChange={e => this.handleOnChangeTitle(e)}/>
             <span className="input-group-btn">
-              <button className="btn btn-info" type="button" onClick={e => this.handleAddButtonClick(e)}>Add Entry</button>
+              <button disabled={this.state.addDisabled} className="btn btn-info" type="button" onClick={e => this.handleAddButtonClick(e)}>Add Entry</button>
             </span>
           </div>
       </div>
