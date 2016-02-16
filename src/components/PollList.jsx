@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import PollItem from './PollItem';
 import Spinner from './Spinner';
+import { find } from 'lodash';
 
 export default class PollList extends Component {
 
@@ -8,7 +9,8 @@ export default class PollList extends Component {
     super(props);
     this.state = {
       addDisabled: true,
-      loading: true
+      loading: true,
+      repeatedPoll: false
     };
   }
 
@@ -32,23 +34,30 @@ export default class PollList extends Component {
 
 
   handleAddButtonClick() {
-    const { addPoll } = this.props;
+    const { addPoll, polls } = this.props;
     const node = this.refs.title;
     const title =  node.value.trim();
-    addPoll(title);
-    node.value = '';
-    this.setState({
-      addDisabled: true
-    });
+    const isRepeated = find(polls, poll => poll.title === title);
+    if (isRepeated) {
+      this.setState({
+        addDisabled: true,
+        repeatedPoll: true
+      });
+    } else {
+      addPoll(title);
+      node.value = '';
+      this.setState({
+        addDisabled: true
+      });
+    }
   }
 
   handleOnChangeTitle() {
-
     const node = this.refs.title;
     const title =  node.value.trim();
-
     this.setState({
-      addDisabled: title.length === 0
+      addDisabled: title.length === 0,
+      repeatedPoll: false
     });
   }
 
@@ -73,6 +82,10 @@ export default class PollList extends Component {
          </ul>
       );
 
+    const alert = this.state.repeatedPoll ?
+      <div className="alert alert-danger" role="alert">You can't have multiple polls with the same name</div> :
+      null;
+
     return (
       <div className="row">
         <div className="col-md-6">
@@ -83,6 +96,8 @@ export default class PollList extends Component {
               <button disabled={this.state.addDisabled} className="btn btn-info" type="button" onClick={e => this.handleAddButtonClick(e)}><span className="glyphicon glyphicon-ok-sign" /></button>
             </span>
           </div>
+          <br/>
+          { alert }
         </div>
       </div>
     );

@@ -1,0 +1,29 @@
+{
+  "myPolls": {
+    "homer": {
+      "-KAe-Z0iCXKXoAFLAmxo": {
+        "createdAt": 1455624962205
+      },
+      "-KAe1LOnHKeeBZuPKfag": {
+        "createdAt": 1455625430675
+      },
+      "-KAe1McUak5eMz-wAE8O": {
+        "createdAt": 1455625435708
+      }
+    }
+  },
+  "polls": {
+    "-KAe-Z0iCXKXoAFLAmxo": {
+      "createdAt": 1455624962168,
+      "title": "Esto es un jaleo"
+    },
+    "-KAe1LOnHKeeBZuPKfag": {
+      "createdAt": 1455625430656,
+      "title": "c"
+    },
+    "-KAe1McUak5eMz-wAE8O": {
+      "createdAt": 1455625435690,
+      "title": "d"
+    }
+  }
+}
