@@ -35,6 +35,22 @@ export function addEntry(idPoll, title) {
   };
 }
 
+export function editEntryTitle(idPoll, idEntry, title) {
+  return (dispatch, getState) => {
+    const { firebase } = getState();
+    firebase.child(`polls/${idPoll}/entries/${idEntry}`)
+      .update({title}, error => {
+        if (error) {
+          console.error('ERROR @ updatePoll :', error); // eslint-disable-line no-console
+          dispatch({
+            type: UPDATE_POLL_ERROR,
+            payload: error,
+        });
+      }
+    });
+  };
+}
+
 export function removeEntry(idPoll, idEntry) {
   return (dispatch, getState) => {
     const { firebase } = getState();

@@ -28,7 +28,6 @@ export function registerListeners() {
     ref.on('child_removed', () => {
       dispatch(addNotification('Poll removed'));
     });
-
   };
 }
 

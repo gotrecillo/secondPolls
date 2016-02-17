@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import EntryItem from './EntryItem';
 
 export default class EntryList extends Component {
 
@@ -15,10 +16,6 @@ export default class EntryList extends Component {
     const title =  node.value.trim();
     addEntry(poll.id, title);
     node.value = '';
-  }
-
-  handleRemoveButtonClick(idPoll, idEntry) {
-    this.props.removeEntry(idPoll, idEntry);
   }
 
   handleOnChangeTitle() {
@@ -45,12 +42,9 @@ export default class EntryList extends Component {
           <h3>Entries</h3>
           <ul className="list-group">
             {
-              Object.keys(entries).map( (id, index) =>
-                <li style={{height: '55px'}} className="list-group-item" key={index}>{entries[id].title}
-                  <button onClick={() => this.handleRemoveButtonClick(poll.id, id)} className="btn btn-warning pull-right">
-                    <span className="glyphicon glyphicon-trash"/>
-                  </button>
-                </li> )
+              Object.keys(entries).map( (id) =>
+                <EntryItem entryId={id} key={id} entryTitle={entries[id].title} {...this.props} />
+                )
             }
          </ul>
           <div className="input-group">
