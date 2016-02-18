@@ -61,7 +61,7 @@ export default class PollVote extends Component {
               <h4>Entries</h4>
               <ul className="list-group">
                 {
-                  Object.keys(entries).map( (id, index) =>
+                  Object.keys(entries).sort((idX, idY) => entries[idY].votes - entries[idX].votes).map( (id, index) =>
                     <li className="list-group-item" key={index}>
                       { entries[id].title }
                       <span onClick={ () => this.handleVoteClick(poll.id, id) } className="action-element glyphicon glyphicon-arrow-up"/>
