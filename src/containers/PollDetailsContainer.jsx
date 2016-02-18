@@ -61,6 +61,6 @@ PollDetailsContainer.propTypes = {
 };
 
 export default connect(
-  state => ({ poll: state.pollDetails, auth: state.auth }),
+  state => ({ poll: state.pollDetails, auth: state.auth, polls: state.polls }),
   Object.assign( {}, pollDetailActions, { removePoll } )
 )(PollDetailsContainer);

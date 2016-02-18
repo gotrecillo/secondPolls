@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { find } from 'lodash';
 
 export default class PollDetails extends Component {
 
@@ -36,10 +37,18 @@ export default class PollDetails extends Component {
 
   handleOkClick() {
     const node = this.refs.title;
-    const { poll, editPollTitle } = this.props;
+    const { poll, editPollTitle, polls } = this.props;
     const title = node.value.trim();
-    if (title.length === 0) {
-      this.setState({ errorEditing: true });
+    const isRepeated = find(polls, poll => poll.title === title);
+    if (title === poll.title){
+      this.setState({
+        editing: false,
+        errorEditing: false
+      });
+    }else if (title.length === 0) {
+      this.setState({ errorEditing: 'Please don`t use an empty name' });
+    } else if (isRepeated){
+      this.setState({ errorEditing: 'You already own a poll with this title' });
     } else {
       this.setState({
         editing: false,
@@ -67,7 +76,7 @@ export default class PollDetails extends Component {
               </span>
             </div>
           </h3>
-          <p className={`${this.state.errorEditing ? 'text-danger' : 'hidden'}`}>Please don`t use an empty name</p>
+          <p className={`${this.state.errorEditing ? 'text-danger' : 'hidden'}`}>{this.state.errorEditing}</p>
       </div>
     );
   }
@@ -75,6 +84,7 @@ export default class PollDetails extends Component {
 
 PollDetails.propTypes = {
   poll: PropTypes.object.isRequired,
+  polls: PropTypes.array.isRequired,
   removePoll: PropTypes.func.isRequired,
   editPollTitle: PropTypes.func.isRequired
  };
