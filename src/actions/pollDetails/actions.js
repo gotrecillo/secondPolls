@@ -69,15 +69,31 @@ export function removeEntry(idPoll, idEntry) {
 
 export function voteEntry(idPoll, idEntry) {
   return (dispatch, getState) => {
-    const { firebase } = getState();
-    firebase.child(`polls/${idPoll}/entries/${idEntry}/votes`)
-      .transaction(votes => votes + 1, error => {
-        if (error) {
-          console.error('ERROR @ updatePoll :', error); // eslint-disable-line no-console
-          dispatch({
-            type: UPDATE_POLL_ERROR,
-            payload: error,
-        });
+    const { firebase, auth } = getState();
+    const userVotesRef = firebase.child(`userVotes/${auth.id}/idPoll`);
+    const entriVotesRef = firebase.child(`polls/${idPoll}/entries/${idEntry}/votes`);
+    userVotesRef.once('value', snap => {
+      if (!snap.exists()){
+        userVotesRef.set(idEntry).then( error => {
+          if (error ) {
+            console.error('ERROR @ updatePoll :', error); // eslint-disable-line no-console
+              dispatch({
+                type: UPDATE_POLL_ERROR,
+                payload: error,
+              });
+            } else {
+              entriVotesRef.transaction(votes => votes + 1, error => {
+                if (error) {
+                  console.error('ERROR @ updatePoll :', error); // eslint-disable-line no-console
+                  dispatch({
+                    type: UPDATE_POLL_ERROR,
+                    payload: error,
+                  });
+                }
+              });
+            }
+          }
+        );
       }
     });
   };

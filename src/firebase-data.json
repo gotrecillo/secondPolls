@@ -13,7 +13,7 @@
         "-KAf8KH1rHCjwM9FeHZD": {
           "createdAt": 1455644038280,
           "title": "Pizza",
-          "votes": 18
+          "votes": 21
         },
         "-KAf9dq8aDHjDOVChX_j": {
           "createdAt": 1455644384656,
@@ -27,6 +27,11 @@
         }
       },
       "title": "Favourite Food"
+    }
+  },
+  "userVotes": {
+    "homer": {
+      "idPoll": "-KAf8KH1rHCjwM9FeHZD"
     }
   }
 }
