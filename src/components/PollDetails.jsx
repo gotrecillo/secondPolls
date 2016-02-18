@@ -5,7 +5,8 @@ export default class PollDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      editing: false
+      editing: false,
+      errorEditing: false
     };
   }
 
@@ -28,19 +29,24 @@ export default class PollDetails extends Component {
 
   handleCancelClick() {
     this.setState({
-      editing: false
+      editing: false,
+      errorEditing: false
     });
   }
 
   handleOkClick() {
     const node = this.refs.title;
     const { poll, editPollTitle } = this.props;
-
-    this.setState({
-      editing: false
-    });
-
-    editPollTitle(poll.id, node.value.trim());
+    const title = node.value.trim();
+    if (title.length === 0) {
+      this.setState({ errorEditing: true });
+    } else {
+      this.setState({
+        editing: false,
+        errorEditing: false
+      });
+      editPollTitle(poll.id, title);
+    }
   }
 
   render() {
@@ -53,7 +59,7 @@ export default class PollDetails extends Component {
               <span style={{'marginLeft': '20px'}} className="btn glyphicon glyphicon-edit" onClick={ () => this.handleEditClick() }/>
               <button onClick={() => this.handleRemoveButtonClick(poll.id, poll.title)} className="btn btn-warning glyphicon glyphicon-trash pull-right"></button>
             </span>
-            <div className={`input-group ${this.state.editing ? '' : 'hidden'}`}>
+            <div className={`input-group ${this.state.errorEditing ? 'has-error' : ''} ${this.state.editing ? '' : 'hidden'}`}>
               <input className="form-control" ref="title"/>
               <span className="input-group-btn">
                 <button className="btn btn-danger" type="button" onClick={e => this.handleCancelClick(e)}><span className="glyphicon glyphicon-remove" /></button>
@@ -61,6 +67,7 @@ export default class PollDetails extends Component {
               </span>
             </div>
           </h3>
+          <p className={`${this.state.errorEditing ? 'text-danger' : 'hidden'}`}>Please don`t use an empty name</p>
       </div>
     );
   }
