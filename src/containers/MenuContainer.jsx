@@ -40,7 +40,7 @@ class Menu extends Component {
               <NotificationsContainer { ...this.props } />
               { auth.authenticated ?
                 <li className="navbar-btn"><button className="btn" type="button" onClick={ () => this.handleSignOutClick() }>Sign Out</button></li> :
-                <MenuItem href="/sign-in" { ...this.props }>Sign In</MenuItem>
+                <MenuItem href="/log-in" { ...this.props }>Log In</MenuItem>
               }
             </ul>
           </div>

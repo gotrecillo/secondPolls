@@ -7,6 +7,8 @@ import NotificationsDetailContainer from './containers/NotificationsDetailContai
 import SelectPollContainer from './containers/SelectPollContainer';
 import PollVoteContainer from './containers/PollVoteContainer';
 import SignInContainer from './containers/SignInContainer';
+import RegisterContainer from './containers/RegisterContainer';
+import LogInContainer from './containers/LogInContainer';
 
 export default () => (
   <Route path="/" component={App}>
@@ -16,6 +18,8 @@ export default () => (
     <Route path="vote" component={SelectPollContainer} />
     <Route path="vote/:idPoll" component={PollVoteContainer} />
     <Route path="sign-in" component={SignInContainer} />
+    <Route path="log-up" component={RegisterContainer} />
+    <Route path="log-in" component={LogInContainer} />
     <IndexRoute component={SelectPollContainer}/>
     <Redirect path="*" to="/vote" />
   </Route>
