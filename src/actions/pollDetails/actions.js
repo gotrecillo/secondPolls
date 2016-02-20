@@ -1,4 +1,5 @@
 import Firebase from 'firebase';
+import { addNotification } from '../notify/actions';
 import {
   UPDATE_POLL_ERROR
 } from './action-types';
@@ -19,7 +20,7 @@ export function editPollTitle(idPoll, title) {
   };
 }
 
-export function addEntry(idPoll, title) {
+export function addEntry(idPoll, title, pollTitle) {
   return (dispatch, getState) => {
     const { firebase } = getState();
     firebase.child(`polls/${idPoll}/entries`)
@@ -29,8 +30,10 @@ export function addEntry(idPoll, title) {
           dispatch({
             type: UPDATE_POLL_ERROR,
             payload: error,
-        });
-      }
+          });
+        } else {
+          addNotification(`Added new entry, "${title}", to the poll "${pollTitle}"`)(dispatch, getState);
+        }
     });
   };
 }
@@ -51,7 +54,7 @@ export function editEntryTitle(idPoll, idEntry, title) {
   };
 }
 
-export function removeEntry(idPoll, idEntry) {
+export function removeEntry(idPoll, idEntry, entryTitle) {
   return (dispatch, getState) => {
     const { firebase } = getState();
     firebase.child(`polls/${idPoll}/entries/${idEntry}`)
@@ -62,6 +65,8 @@ export function removeEntry(idPoll, idEntry) {
             type: UPDATE_POLL_ERROR,
             payload: error,
         });
+      } else {
+        addNotification(`Entry removed: "${entryTitle}"`)(dispatch, getState);
       }
     });
   };

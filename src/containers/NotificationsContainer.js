@@ -1,20 +1,9 @@
 import { connect } from 'react-redux';
 
 import Notifications from '../components/Notifications';
-
-function mapStateToProps(state) {
-  return {
-    total: state.messages.length,
-    pending: state.messages.filter( message => message.pending ).length
-  };
-}
-
-function mapActionsToProps() {
-  return {
-  };
-}
+import * as notificatinosActions from '../actions/notify';
 
 export default connect(
-  mapStateToProps,
-  mapActionsToProps
+  state => ({total: state.messages.length, pending: state.messages.filter( message => message.pending ).length}),
+  notificatinosActions
 )(Notifications);

@@ -3,6 +3,9 @@
     "caca": {
       "-KAygs2DO9sN7jOg1vdz": {
         "createdAt": 1455972122856
+      },
+      "-KAzPxUY2NhSDA393Sew": {
+        "createdAt": 1455984203783
       }
     },
     "homer": {
@@ -54,12 +57,26 @@
     },
     "-KAygs2DO9sN7jOg1vdz": {
       "createdAt": 1455972122834,
+      "entries": {
+        "-KAzNLO-3EmVdNStCycM": {
+          "createdAt": 1455983519303,
+          "title": "caca1",
+          "votes": 1
+        }
+      },
       "title": "cacapoll"
+    },
+    "-KAzPxUY2NhSDA393Sew": {
+      "createdAt": 1455984203751,
+      "title": "moreCacaPoll"
     }
   },
   "userVotes": {
     "homer": {
       "idPoll": "-KAf8KH1rHCjwM9FeHZD"
+    },
+    "null": {
+      "idPoll": "-KAzNLO-3EmVdNStCycM"
     }
   },
   "users": {

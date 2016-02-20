@@ -7,20 +7,20 @@ export default class NotificationItem extends Component {
   }
 
   componentDidMount() {
-    const { onShowMessage, index } = this.props;
-    onShowMessage(index);
+    const { setNotificationAsReaded, message } = this.props;
+    setNotificationAsReaded(message.id);
   }
 
-  handleRemoveButtonClick(index) {
-    this.props.onRemoveNotificationClick(index);
+  handleRemoveButtonClick(id) {
+    this.props.removeNotification(id);
   }
 
   render() {
-    const { message, index } = this.props;
+    const { message } = this.props;
     const className = message.isNew ? 'alert alert-info' : 'alert alert-success';
     return (
       <div className={className} role="alert">
-        <button type="button" className="close" onClick={ () => this.handleRemoveButtonClick(index)}><span>&times;</span></button>
+        <button type="button" className="close" onClick={ () => this.handleRemoveButtonClick(message.id)}><span>&times;</span></button>
         <strong>Info:</strong> {message.text} at: {message.created.toLocaleString()}
       </div>
     );
@@ -28,8 +28,7 @@ export default class NotificationItem extends Component {
 }
 
 NotificationItem.propTypes = {
-  index: PropTypes.number.isRequired,
   message: PropTypes.object.isRequired,
-  onRemoveNotificationClick: PropTypes.func.isRequired,
-  onShowMessage: PropTypes.func.isRequired
+  removeNotification: PropTypes.func.isRequired,
+  setNotificationAsReaded: PropTypes.func.isRequired
 };

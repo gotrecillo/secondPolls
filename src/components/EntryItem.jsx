@@ -39,8 +39,8 @@ export default class EntryItem extends Component {
     editEntryTitle(poll.id, entryId, node.value.trim());
   }
 
-  handleRemoveButtonClick(idPoll, idEntry) {
-    this.props.removeEntry(idPoll, idEntry);
+  handleRemoveButtonClick(idPoll, idEntry, entryTitle) {
+    this.props.removeEntry(idPoll, idEntry, entryTitle);
   }
 
   render() {
@@ -51,7 +51,7 @@ export default class EntryItem extends Component {
         <span  className={`${this.state.editing ? 'hidden' : ''}`}>
           {entryTitle}
           <span style={{'marginLeft': '20px'}} className="btn glyphicon glyphicon-edit" onClick={ () => this.handleEditClick() }/>
-          <button onClick={() => this.handleRemoveButtonClick(poll.id, entryId)} className="btn btn-warning pull-right">
+          <button onClick={() => this.handleRemoveButtonClick(poll.id, entryId, entryTitle)} className="btn btn-warning pull-right">
             <span className="glyphicon glyphicon-trash"/>
           </button>
         </span>

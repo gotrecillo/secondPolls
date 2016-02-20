@@ -1,5 +1,5 @@
 import { SET_POLLS } from './action-types';
-import { addNotification } from '../notify/actions';
+// import { addNotification } from '../notify/actions';
 
 export function registerListeners() {
   return (dispatch, getState) => {
@@ -20,7 +20,7 @@ export function registerListeners() {
       });
 
     });
-
+    /*
     ref.orderByChild('createdAt').startAt(Date.now()).on('child_added', () => {
       dispatch(addNotification('Added a new poll'));
     });
@@ -28,6 +28,7 @@ export function registerListeners() {
     ref.on('child_removed', () => {
       dispatch(addNotification('Poll removed'));
     });
+  */
   };
 }
 
