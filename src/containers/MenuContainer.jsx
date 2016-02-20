@@ -37,7 +37,7 @@ class Menu extends Component {
             </ul>
             <ul className="nav navbar-nav navbar-right">
               { auth.authenticated ? <p className="navbar-text user-name">{auth.id}</p> : null }
-              <NotificationsContainer { ...this.props } />
+              { auth.authenticated ? <NotificationsContainer { ...this.props } /> : <MenuItem href="/log-up" { ...this.props }>Register</MenuItem> }
               { auth.authenticated ?
                 <li className="navbar-btn"><button className="btn" type="button" onClick={ () => this.handleSignOutClick() }>Sign Out</button></li> :
                 <MenuItem href="/log-in" { ...this.props }>Log In</MenuItem>
