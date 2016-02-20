@@ -12,6 +12,14 @@ export default class NotificationsDetail extends Component {
     };
   }
 
+  componentWillMount(){
+    const { history, auth } = this.props;
+
+    if (!auth.authenticated) {
+      history.replaceState(null, '/');
+    }
+  }
+
   handleRemoveAllButtonClick() {
     this.props.removeAllNotifications();
   }
@@ -40,7 +48,9 @@ export default class NotificationsDetail extends Component {
 }
 
 NotificationsDetail.propTypes = {
+  auth: PropTypes.object,
   messages: PropTypes.array,
+  history: PropTypes.object,
   removeAllNotifications: PropTypes.func.isRequired
  };
 
