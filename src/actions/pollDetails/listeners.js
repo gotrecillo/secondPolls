@@ -1,4 +1,4 @@
-import { SET_POLL, RESET_POLL } from './action-types';
+import { SET_POLL, RESET_POLL, SET_VOTED_STATUS } from './action-types';
 import { SET_POLLS } from '../polls';
 import { pushState } from 'redux-router';
 
@@ -33,6 +33,20 @@ export function registerListeners(params) {
         pushState(null, '/')
       );
     });
+
+    const userVotesRef = firebase.child(`userVotes/${auth.id}/${params.idPoll}`);
+    userVotesRef.on('value', snap => {
+      dispatch(snap.exists() ?
+        {
+          type: SET_VOTED_STATUS,
+          status: true
+        } :
+        {
+          type: SET_VOTED_STATUS,
+          status: false
+        }
+      );
+    });
   };
 }
 
@@ -42,12 +56,17 @@ export function unregisterListeners(params) {
     const userId = auth.id;
     firebase.child(`polls/${params.idPoll}`).off();
     firebase.child(`myPolls/${userId}`).off();
+    firebase.child(`userVotes/${auth.id}/${params.idPoll}`).off();
     dispatch({
       type: SET_POLLS,
       polls: []
     });
     dispatch({
       type: RESET_POLL
+    });
+    dispatch({
+      type: SET_VOTED_STATUS,
+      status: false
     });
   };
 }

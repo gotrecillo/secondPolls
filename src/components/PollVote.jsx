@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Spinner from './Spinner';
+import { throttle } from 'lodash';
 
 const progressContex = [
   'progress-bar-success',
@@ -46,7 +47,7 @@ export default class PollVote extends Component {
   }
 
   render() {
-    const { poll, auth } = this.props;
+    const { poll, auth, hasVoted } = this.props;
     const entries = poll.entries || {};
     const total = this.totalVotes(entries);
     const contents = this.state.loading ? <Spinner /> : <div>
@@ -64,7 +65,7 @@ export default class PollVote extends Component {
                   Object.keys(entries).sort((idX, idY) => entries[idY].votes - entries[idX].votes).map( (id, index) =>
                     <li className="list-group-item" key={index}>
                       { entries[id].title }
-                      { auth.authenticated ? <span onClick={ () => this.handleVoteClick(poll.id, id) } className="action-element glyphicon glyphicon-arrow-up"/> : null }
+                      { ( auth.authenticated && !hasVoted ) ? <span onClick={ throttle(() => this.handleVoteClick(poll.id, id), 10000) } className="action-element glyphicon glyphicon-arrow-up"/> : null }
                       <br/>
                       { this.createProgressBar(entries[id], total, index) }
                     </li>
@@ -82,10 +83,15 @@ export default class PollVote extends Component {
 }
 
 PollVote.propTypes = {
+  hasVoted: PropTypes.bool.isRequired,
   poll: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
   voteEntry: PropTypes.func.isRequired,
   params: PropTypes.object.isRequired,
   registerListeners: PropTypes.func.isRequired,
   unregisterListeners: PropTypes.func.isRequired
- };
+};
+
+PollVote.defaultProps = {
+  hasVoted: true
+};

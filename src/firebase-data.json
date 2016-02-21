@@ -1,4 +1,40 @@
 {
+  "myNotifications": {
+    "caca": {
+      "-KB3ESAdZzj_G_ri-c7n": {
+        "created": 1456065073943,
+        "id": "-KB3ESAdZzj_G_ri-c7n",
+        "isNew": true,
+        "level": "INFO",
+        "pending": true,
+        "text": "Added new poll, \"cacadeluxe\"."
+      },
+      "-KB3EUooOzu2-P_-m1fD": {
+        "created": 1456065084769,
+        "id": "-KB3EUooOzu2-P_-m1fD",
+        "isNew": true,
+        "level": "INFO",
+        "pending": true,
+        "text": "Added new entry, \"1\", to the poll \"cacadeluxe\""
+      },
+      "-KB3FLuy_6mpBYzlQgAr": {
+        "created": 1456065310445,
+        "id": "-KB3FLuy_6mpBYzlQgAr",
+        "isNew": true,
+        "level": "INFO",
+        "pending": true,
+        "text": "Added new poll, \"caca\"."
+      },
+      "-KB3FMp5ffh_y_r7nIt_": {
+        "created": 1456065314164,
+        "id": "-KB3FMp5ffh_y_r7nIt_",
+        "isNew": true,
+        "level": "INFO",
+        "pending": true,
+        "text": "Added new entry, \"1\", to the poll \"caca\""
+      }
+    }
+  },
   "myPolls": {
     "caca": {
       "-KAygs2DO9sN7jOg1vdz": {
@@ -9,6 +45,15 @@
       },
       "-KB-3r3muKXQcNcICdSJ": {
         "createdAt": 1455995187538
+      },
+      "-KB3Db2CWCAd1FSuV2Y4": {
+        "createdAt": 1456064852247
+      },
+      "-KB3ES9eHWxJ7aKAjuIU": {
+        "createdAt": 1456065073920
+      },
+      "-KB3FLtpOsah3WFv2V_r": {
+        "createdAt": 1456065310411
       }
     },
     "homer": {
@@ -81,6 +126,13 @@
     },
     "-KAzPxUY2NhSDA393Sew": {
       "createdAt": 1455984203751,
+      "entries": {
+        "-KB3CjRgUVzHpUi9wIpn": {
+          "createdAt": 1456064624438,
+          "title": "1",
+          "votes": 1
+        }
+      },
       "title": "moreCacaPoll"
     },
     "-KB-3r3muKXQcNcICdSJ": {
@@ -93,12 +145,74 @@
         }
       },
       "title": "cacacaca"
+    },
+    "-KB3Db2CWCAd1FSuV2Y4": {
+      "createdAt": 1456064852223,
+      "entries": {
+        "-KB3DcKxXxUXYOmYdmRh": {
+          "createdAt": 1456064857515,
+          "title": "1",
+          "votes": 1
+        },
+        "-KB3DvRH06awPiG4IfQJ": {
+          "createdAt": 1456064935744,
+          "title": "2",
+          "votes": 0
+        },
+        "-KB3EA4f6ad0wtDowUMR": {
+          "createdAt": 1456064999833,
+          "title": "3",
+          "votes": 0
+        },
+        "-KB3EASYbtXwCMHOo9VR": {
+          "createdAt": 1456065001360,
+          "title": "4",
+          "votes": 0
+        },
+        "-KB3EAq4QjmcVgSm5rIg": {
+          "createdAt": 1456065002931,
+          "title": "5",
+          "votes": 0
+        },
+        "-KB3EBEEla_iozCTuheY": {
+          "createdAt": 1456065004541,
+          "title": "6",
+          "votes": 0
+        }
+      },
+      "title": "cacadelavaca"
+    },
+    "-KB3ES9eHWxJ7aKAjuIU": {
+      "createdAt": 1456065073879,
+      "entries": {
+        "-KB3EUm8Z9EtkX460BB-": {
+          "createdAt": 1456065084599,
+          "title": "1",
+          "votes": 1
+        }
+      },
+      "title": "cacadeluxe"
+    },
+    "-KB3FLtpOsah3WFv2V_r": {
+      "createdAt": 1456065310370,
+      "entries": {
+        "-KB3FMmNkS7JrOZHBMnd": {
+          "createdAt": 1456065313990,
+          "title": "1",
+          "votes": 1
+        }
+      },
+      "title": "caca"
     }
   },
   "userVotes": {
     "caca": {
       "-KAygs2DO9sN7jOg1vdz": "-KB-6-CaYPeqTBMz1yYE",
-      "-KB-3r3muKXQcNcICdSJ": "-KB39i9jE5F-siyvGQIX"
+      "-KAzPxUY2NhSDA393Sew": "-KB3CjRgUVzHpUi9wIpn",
+      "-KB-3r3muKXQcNcICdSJ": "-KB39i9jE5F-siyvGQIX",
+      "-KB3Db2CWCAd1FSuV2Y4": "-KB3DcKxXxUXYOmYdmRh",
+      "-KB3ES9eHWxJ7aKAjuIU": "-KB3EUm8Z9EtkX460BB-",
+      "-KB3FLtpOsah3WFv2V_r": "-KB3FMmNkS7JrOZHBMnd"
     }
   },
   "users": {
