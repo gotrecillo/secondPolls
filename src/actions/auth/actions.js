@@ -40,7 +40,13 @@ export function createUser(user, password){
           text: 'Username already in use'
         });
       } else {
-        ref.set({ password});
+        ref.set({ password}).then(error => {
+          if (error) {
+            console.log("Register failed", error);
+          } else {
+            logIn(user, password)(dispatch, getState);
+          }
+        });
       }
     });
   };

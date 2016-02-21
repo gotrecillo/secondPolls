@@ -32,6 +32,38 @@
         "level": "INFO",
         "pending": true,
         "text": "Added new entry, \"1\", to the poll \"caca\""
+      },
+      "-KB3kfzg9xjsUynsDlwn": {
+        "created": 1456073785364,
+        "id": "-KB3kfzg9xjsUynsDlwn",
+        "isNew": true,
+        "level": "INFO",
+        "pending": true,
+        "text": "Added new entry, \"1\", to the poll \"caca\""
+      },
+      "-KB3kgU6vNuEa7ftpLg7": {
+        "created": 1456073787375,
+        "id": "-KB3kgU6vNuEa7ftpLg7",
+        "isNew": true,
+        "level": "INFO",
+        "pending": true,
+        "text": "Added new entry, \"1\", to the poll \"caca\""
+      },
+      "-KB3kiuFS1K2eeD_1690": {
+        "created": 1456073797304,
+        "id": "-KB3kiuFS1K2eeD_1690",
+        "isNew": true,
+        "level": "INFO",
+        "pending": true,
+        "text": "Entry removed: \"1\""
+      },
+      "-KB3kj9whtJNPAs8kUof": {
+        "created": 1456073798374,
+        "id": "-KB3kj9whtJNPAs8kUof",
+        "isNew": true,
+        "level": "INFO",
+        "pending": true,
+        "text": "Entry removed: \"1\""
       }
     }
   },
@@ -224,6 +256,9 @@
     },
     "foo": {
       "password": "foo"
+    },
+    "redcode": {
+      "password": "redcode"
     }
   }
 }
