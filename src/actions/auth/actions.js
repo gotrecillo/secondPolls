@@ -1,5 +1,5 @@
 import { pushState } from 'redux-router';
-import { INIT_AUTH, SIGN_IN_SUCCESS, SIGN_OUT_SUCCESS, SIGN_IN_FAIL } from './action-types.js';
+import { INIT_AUTH, SIGN_IN_SUCCESS, SIGN_OUT_SUCCESS, SIGN_IN_FAIL, REGISTER_FAIL } from './action-types.js';
 import { tokens } from '../../utils/tokens';
 import FirebaseTokenGenerator from "firebase-token-generator";
 
@@ -35,7 +35,10 @@ export function createUser(user, password){
     const ref = firebase.child(`users/${user}`);
     ref.once('value', snap => {
       if (snap.exists()){
-        console.log('Error usuario existe');
+        dispatch({
+          type: REGISTER_FAIL,
+          text: 'Username already in use'
+        });
       } else {
         ref.set({ password});
       }

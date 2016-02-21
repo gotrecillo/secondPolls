@@ -9,6 +9,7 @@ import menu from './menu';
 import firebase from './firebase';
 import auth from './auth';
 import votedStatus from './votedStatus';
+import register from './register';
 
 const pollApp = combineReducers({
   auth,
@@ -20,7 +21,8 @@ const pollApp = combineReducers({
   actionsPending,
   menu,
   firebase,
-  votedStatus
+  votedStatus,
+  register
 });
 
 export default pollApp;

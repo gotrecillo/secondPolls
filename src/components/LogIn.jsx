@@ -10,7 +10,7 @@ export default class LogIn extends Component {
     const { logIn } = this.props;
     const userName = this.refs.userName.value.trim();
     const pass = this.refs.pass.value.trim();
-     logIn(userName, pass);
+      logIn(userName, pass);
   }
 
 
@@ -30,7 +30,7 @@ export default class LogIn extends Component {
                 <label>Password</label>
                 <input type="password" className="form-control" ref="pass"  placeholder="Password"/>
               </div>
-              <button type="submit" className="btn btn-default" onClick={ (e) => {e.preventDefault(); this.handleLogIn();} } >LogIn</button>
+              <button type="submit" className="btn btn-default" onClick={ (e) => {e.preventDefault(); this.handleLogIn();} } >Log In</button>
               <a href="/log-up"><span className="btn btn-default pull-right" >Register</span></a>
             </form>
             <br/>

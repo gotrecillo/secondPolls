@@ -4,6 +4,11 @@ export default class Register extends Component {
 
   constructor(props) {
     super(props);
+    this.state = { errorText: props.registerStatus };
+  }
+
+  componentWillReceiveProps(newProps){
+    this.setState({ errorText: newProps.registerStatus });
   }
 
   handleRegister(){
@@ -14,7 +19,7 @@ export default class Register extends Component {
     if (this.checkPass(pass, pass2)) {
       createUser(userName, pass);
     } else {
-      console.log('pick matching passwords');
+      this.setState({ errorText: 'Passwords do not match' });
     }
 
   }
@@ -24,6 +29,7 @@ export default class Register extends Component {
   }
 
   render() {
+    const { errorText } = this.state;
     return (
       <div className="row">
         <div className="panel col-md-6 col-md-offset-3 panel-default">
@@ -41,8 +47,11 @@ export default class Register extends Component {
                 <label>Re-type Password</label>
                 <input type="password" className="form-control" ref="pass2"  placeholder="Password"/>
               </div>
+              <a href="/log-in"><span className="btn btn-default">Log In</span></a>
               <button type="submit" className="btn btn-default pull-right" onClick={ (e) => { e.preventDefault(); this.handleRegister();} }>Register</button>
             </form>
+            <br/>
+            { errorText ? <div className="alert alert-danger" role="alert">{errorText}</div> : null }
           </div>
         </div>
       </div>
@@ -52,5 +61,6 @@ export default class Register extends Component {
 }
 
 Register.propTypes = {
-  createUser: PropTypes.func.isRequired
+  createUser: PropTypes.func.isRequired,
+  registerStatus: PropTypes.string
 };
