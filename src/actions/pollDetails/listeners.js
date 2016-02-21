@@ -39,11 +39,13 @@ export function registerListeners(params) {
       dispatch(snap.exists() ?
         {
           type: SET_VOTED_STATUS,
-          status: true
+          status: true,
+          entry: snap.val()
         } :
         {
           type: SET_VOTED_STATUS,
-          status: false
+          status: false,
+          entry: ''
         }
       );
     });
@@ -66,7 +68,8 @@ export function unregisterListeners(params) {
     });
     dispatch({
       type: SET_VOTED_STATUS,
-      status: false
+      status: false,
+      entry: ''
     });
   };
 }

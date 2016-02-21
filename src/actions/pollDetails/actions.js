@@ -103,3 +103,78 @@ export function voteEntry(idPoll, idEntry) {
     });
   };
 }
+
+export function unvoteEntry(idPoll, idEntry) {
+  return (dispatch, getState) => {
+    const { firebase, auth } = getState();
+    const userVotesRef = firebase.child(`userVotes/${auth.id}/${idPoll}`);
+    const entriVotesRef = firebase.child(`polls/${idPoll}/entries/${idEntry}/votes`);
+    userVotesRef.once('value', snap => {
+      if (snap.exists()){
+        userVotesRef.remove().then( error => {
+          if (error ) {
+            console.error('ERROR @ updatePoll :', error); // eslint-disable-line no-console
+              dispatch({
+                type: UPDATE_POLL_ERROR,
+                payload: error,
+              });
+            } else {
+              entriVotesRef.transaction(votes => votes - 1, error => {
+                if (error) {
+                  console.error('ERROR @ updatePoll :', error); // eslint-disable-line no-console
+                  dispatch({
+                    type: UPDATE_POLL_ERROR,
+                    payload: error,
+                  });
+                }
+              });
+            }
+          }
+        );
+      }
+    });
+  };
+}
+
+export function changeVote(idPoll, newIdEntry, oldIdEntry) {
+  return (dispatch, getState) => {
+    const { firebase, auth } = getState();
+    const userVotesRef = firebase.child(`userVotes/${auth.id}/${idPoll}`);
+    const oldVotesRef = firebase.child(`polls/${idPoll}/entries/${oldIdEntry}/votes`);
+    const newVotesRef = firebase.child(`polls/${idPoll}/entries/${newIdEntry}/votes`);
+    userVotesRef.once('value', snap => {
+      if (snap.val() === oldIdEntry){
+        userVotesRef.set(newIdEntry).then( error => {
+          if (error ) {
+            console.error('ERROR @ updatePoll :', error); // eslint-disable-line no-console
+              dispatch({
+                type: UPDATE_POLL_ERROR,
+                payload: error,
+              });
+            } else {
+              oldVotesRef.transaction(votes => votes - 1, error => {
+                if (error) {
+                  console.error('ERROR @ updatePoll :', error); // eslint-disable-line no-console
+                  dispatch({
+                    type: UPDATE_POLL_ERROR,
+                    payload: error,
+                  });
+                } else {
+                  newVotesRef.transaction(votes => votes + 1, error => {
+                    if (error) {
+                      console.error('ERROR @ updatePoll :', error); // eslint-disable-line no-console
+                      dispatch({
+                        type: UPDATE_POLL_ERROR,
+                        payload: error,
+                      });
+                    }
+                  });
+                }
+              });
+            }
+          }
+        );
+      }
+    });
+  };
+}

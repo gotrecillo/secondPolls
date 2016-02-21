@@ -5,6 +5,6 @@ import PollVote from '../components/PollVote';
 import * as pollDetailActions from '../actions/pollDetails';
 
 export default connect(
-  state => ({poll: state.pollDetails, auth: state.auth, hasVoted: state.votedStatus}),
+  state => ({poll: state.pollDetails, auth: state.auth, hasVoted: state.votedStatus, votedEntry: state.votedEntry}),
   pollDetailActions
 )(PollVote);

@@ -32,6 +32,14 @@ export default class PollVote extends Component {
     this.props.voteEntry(idPoll, idEntry);
   }
 
+  handleUnvoteClick(idPoll, idEntry) {
+    this.props.unvoteEntry(idPoll, idEntry);
+  }
+
+  handleChangeVoteClick(idPoll, newIdEntry, oldIdEntry) {
+    this.props.changeVote(idPoll, newIdEntry, oldIdEntry);
+  }
+
   totalVotes(entries) {
     return Object.keys(entries).reduce( (total, id) => total + entries[id].votes, 0 );
   }
@@ -47,7 +55,7 @@ export default class PollVote extends Component {
   }
 
   render() {
-    const { poll, auth, hasVoted } = this.props;
+    const { poll, auth, hasVoted, votedEntry } = this.props;
     const entries = poll.entries || {};
     const total = this.totalVotes(entries);
     const contents = this.state.loading ? <Spinner /> : <div>
@@ -66,6 +74,8 @@ export default class PollVote extends Component {
                     <li className="list-group-item" key={index}>
                       { entries[id].title }
                       { ( auth.authenticated && !hasVoted ) ? <span onClick={ throttle(() => this.handleVoteClick(poll.id, id), 10000) } className="action-element glyphicon glyphicon-arrow-up"/> : null }
+                      { hasVoted && ( votedEntry === id ) ? <span onClick={ throttle(() => this.handleUnvoteClick(poll.id, id), 10000) } className="action-element glyphicon glyphicon-arrow-down"/> : null }
+                      { hasVoted && ( votedEntry !== id ) ? <span onClick={ throttle(() => this.handleChangeVoteClick(poll.id, id, votedEntry), 10000) } className="action-element glyphicon glyphicon-arrow-up"/> : null }
                       <br/>
                       { this.createProgressBar(entries[id], total, index) }
                     </li>
@@ -84,9 +94,12 @@ export default class PollVote extends Component {
 
 PollVote.propTypes = {
   hasVoted: PropTypes.bool.isRequired,
+  votedEntry: PropTypes.string.isRequired,
   poll: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
   voteEntry: PropTypes.func.isRequired,
+  unvoteEntry: PropTypes.func.isRequired,
+  changeVote: PropTypes.func.isRequired,
   params: PropTypes.object.isRequired,
   registerListeners: PropTypes.func.isRequired,
   unregisterListeners: PropTypes.func.isRequired

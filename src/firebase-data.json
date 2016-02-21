@@ -65,6 +65,40 @@
         "pending": true,
         "text": "Entry removed: \"1\""
       }
+    },
+    "redcode": {
+      "-KB4W3qzXB5OxyocDgPN": {
+        "created": 1456086470133,
+        "id": "-KB4W3qzXB5OxyocDgPN",
+        "isNew": true,
+        "level": "INFO",
+        "pending": true,
+        "text": "Added new poll, \"redcaca\"."
+      },
+      "-KB4W4dMcw2ovCE2aFMQ": {
+        "created": 1456086473356,
+        "id": "-KB4W4dMcw2ovCE2aFMQ",
+        "isNew": true,
+        "level": "INFO",
+        "pending": true,
+        "text": "Added new entry, \"1\", to the poll \"redcaca\""
+      },
+      "-KB4W5-9-9wztlCnYKlc": {
+        "created": 1456086474815,
+        "id": "-KB4W5-9-9wztlCnYKlc",
+        "isNew": true,
+        "level": "INFO",
+        "pending": true,
+        "text": "Added new entry, \"2\", to the poll \"redcaca\""
+      },
+      "-KB4W5IM1hiJRLcmS_OS": {
+        "created": 1456086476045,
+        "id": "-KB4W5IM1hiJRLcmS_OS",
+        "isNew": true,
+        "level": "INFO",
+        "pending": true,
+        "text": "Added new entry, \"3\", to the poll \"redcaca\""
+      }
     }
   },
   "myPolls": {
@@ -97,6 +131,11 @@
       },
       "-KAo1D4uUVTa1__mxPDm": {
         "createdAt": 1455793168809
+      }
+    },
+    "redcode": {
+      "-KB4W3qMiVaNKBUtB3HU": {
+        "createdAt": 1456086470121
       }
     }
   },
@@ -141,7 +180,7 @@
         "-KAzNLO-3EmVdNStCycM": {
           "createdAt": 1455983519303,
           "title": "caca1",
-          "votes": 2
+          "votes": 3
         },
         "-KB-5znEi_uRofja_GdK": {
           "createdAt": 1455995747543,
@@ -173,7 +212,7 @@
         "-KB39i9jE5F-siyvGQIX": {
           "createdAt": 1456063832759,
           "title": "1",
-          "votes": 1
+          "votes": 2
         }
       },
       "title": "cacacaca"
@@ -235,6 +274,27 @@
         }
       },
       "title": "caca"
+    },
+    "-KB4W3qMiVaNKBUtB3HU": {
+      "createdAt": 1456086470095,
+      "entries": {
+        "-KB4W4aa4IKiAzc4ZAFo": {
+          "createdAt": 1456086473180,
+          "title": "1",
+          "votes": 0
+        },
+        "-KB4W4yddqdTPDTKjzeU": {
+          "createdAt": 1456086474719,
+          "title": "2",
+          "votes": 1
+        },
+        "-KB4W5Gcrp6-4MU6nOic": {
+          "createdAt": 1456086475934,
+          "title": "3",
+          "votes": 0
+        }
+      },
+      "title": "redcaca"
     }
   },
   "userVotes": {
@@ -245,6 +305,11 @@
       "-KB3Db2CWCAd1FSuV2Y4": "-KB3DcKxXxUXYOmYdmRh",
       "-KB3ES9eHWxJ7aKAjuIU": "-KB3EUm8Z9EtkX460BB-",
       "-KB3FLtpOsah3WFv2V_r": "-KB3FMmNkS7JrOZHBMnd"
+    },
+    "redcode": {
+      "-KAygs2DO9sN7jOg1vdz": "-KAzNLO-3EmVdNStCycM",
+      "-KB-3r3muKXQcNcICdSJ": "-KB39i9jE5F-siyvGQIX",
+      "-KB4W3qMiVaNKBUtB3HU": "-KB4W4yddqdTPDTKjzeU"
     }
   },
   "users": {
