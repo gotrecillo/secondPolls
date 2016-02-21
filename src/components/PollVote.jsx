@@ -38,7 +38,7 @@ export default class PollVote extends Component {
   createProgressBar(entry, totalVotes, index) {
     return (
       <div className="progress">
-        <div className={ `progress-bar ${ progressContex[index % progressContex.length] } progress-bar-striped` } role="progressbar" style={{'width': entry.votes * 100 / (totalVotes || Infinity) + '%', 'min-width': '2em'}}>
+        <div className={ `progress-bar ${ progressContex[index % progressContex.length] } progress-bar-striped` } role="progressbar" style={{'width': entry.votes * 100 / (totalVotes || Infinity) + '%', 'minWidth': '2em'}}>
           { entry.votes || 0 }
         </div>
       </div>

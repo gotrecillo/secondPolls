@@ -75,7 +75,7 @@ export function removeEntry(idPoll, idEntry, entryTitle) {
 export function voteEntry(idPoll, idEntry) {
   return (dispatch, getState) => {
     const { firebase, auth } = getState();
-    const userVotesRef = firebase.child(`userVotes/${auth.id}/idPoll`);
+    const userVotesRef = firebase.child(`userVotes/${auth.id}/${idPoll}`);
     const entriVotesRef = firebase.child(`polls/${idPoll}/entries/${idEntry}/votes`);
     userVotesRef.once('value', snap => {
       if (!snap.exists()){

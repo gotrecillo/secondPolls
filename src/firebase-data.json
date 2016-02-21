@@ -74,7 +74,7 @@
         "-KB-6-CaYPeqTBMz1yYE": {
           "createdAt": 1455995749227,
           "title": "2",
-          "votes": 0
+          "votes": 1
         }
       },
       "title": "cacapoll"
@@ -85,21 +85,20 @@
     },
     "-KB-3r3muKXQcNcICdSJ": {
       "createdAt": 1455995187520,
+      "entries": {
+        "-KB39i9jE5F-siyvGQIX": {
+          "createdAt": 1456063832759,
+          "title": "1",
+          "votes": 1
+        }
+      },
       "title": "cacacaca"
     }
   },
   "userVotes": {
-    "baz": {
-      "idPoll": "-KB-5znEi_uRofja_GdK"
-    },
     "caca": {
-      "idPoll": "-KAzNLO-3EmVdNStCycM"
-    },
-    "foo": {
-      "idPoll": "-KAzNLO-3EmVdNStCycM"
-    },
-    "homer": {
-      "idPoll": "-KAf8KH1rHCjwM9FeHZD"
+      "-KAygs2DO9sN7jOg1vdz": "-KB-6-CaYPeqTBMz1yYE",
+      "-KB-3r3muKXQcNcICdSJ": "-KB39i9jE5F-siyvGQIX"
     }
   },
   "users": {
