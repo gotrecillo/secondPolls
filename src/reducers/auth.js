@@ -27,6 +27,12 @@ export default function authReducer(state = initialState, action) {
         id: null
       };
 
+    case authActions.SIGN_IN_FAIL:
+      return {
+        authenticated: false,
+        fail: true,
+        id: null
+      };
     default:
       return state;
   }

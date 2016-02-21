@@ -15,6 +15,8 @@ export default class LogIn extends Component {
 
 
   render() {
+    const { auth } = this.props;
+
     return (
       <div className="row">
         <div className="panel col-md-6 col-md-offset-3 panel-default">
@@ -31,6 +33,8 @@ export default class LogIn extends Component {
               <button type="submit" className="btn btn-default" onClick={ (e) => {e.preventDefault(); this.handleLogIn();} } >LogIn</button>
               <a href="/log-up"><span className="btn btn-default pull-right" >Register</span></a>
             </form>
+            <br/>
+            { auth.fail ? <div className="alert alert-danger" role="alert">Wrong username or password</div> : null }
           </div>
         </div>
       </div>
@@ -40,5 +44,6 @@ export default class LogIn extends Component {
 }
 
 LogIn.propTypes = {
-  logIn: PropTypes.func.isRequired
+  logIn: PropTypes.func.isRequired,
+  auth: PropTypes.object
 };

@@ -1,5 +1,5 @@
 import { pushState } from 'redux-router';
-import { INIT_AUTH, SIGN_IN_SUCCESS, SIGN_OUT_SUCCESS } from './action-types.js';
+import { INIT_AUTH, SIGN_IN_SUCCESS, SIGN_OUT_SUCCESS, SIGN_IN_FAIL } from './action-types.js';
 import { tokens } from '../../utils/tokens';
 import FirebaseTokenGenerator from "firebase-token-generator";
 
@@ -65,8 +65,10 @@ export function logIn(user, password){
             dispatch(pushState(null, '/poll'));
           }
         });
-        console.log('guay del paraguay');
       } else {
+        dispatch({
+          type: SIGN_IN_FAIL
+        });
         console.log('no me la cueles');
       }
     });
