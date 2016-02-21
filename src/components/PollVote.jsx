@@ -38,7 +38,7 @@ export default class PollVote extends Component {
   createProgressBar(entry, totalVotes, index) {
     return (
       <div className="progress">
-        <div className={ `progress-bar ${ progressContex[index % progressContex.length] } progress-bar-striped` } role="progressbar" style={{'width': entry.votes * 100 / (totalVotes || Infinity) + '%'}}>
+        <div className={ `progress-bar ${ progressContex[index % progressContex.length] } progress-bar-striped` } role="progressbar" style={{'width': entry.votes * 100 / (totalVotes || Infinity) + '%', 'min-width': '2em'}}>
           { entry.votes || 0 }
         </div>
       </div>
@@ -46,7 +46,7 @@ export default class PollVote extends Component {
   }
 
   render() {
-    const { poll } = this.props;
+    const { poll, auth } = this.props;
     const entries = poll.entries || {};
     const total = this.totalVotes(entries);
     const contents = this.state.loading ? <Spinner /> : <div>
@@ -64,7 +64,7 @@ export default class PollVote extends Component {
                   Object.keys(entries).sort((idX, idY) => entries[idY].votes - entries[idX].votes).map( (id, index) =>
                     <li className="list-group-item" key={index}>
                       { entries[id].title }
-                      <span onClick={ () => this.handleVoteClick(poll.id, id) } className="action-element glyphicon glyphicon-arrow-up"/>
+                      { auth.authenticated ? <span onClick={ () => this.handleVoteClick(poll.id, id) } className="action-element glyphicon glyphicon-arrow-up"/> : null }
                       <br/>
                       { this.createProgressBar(entries[id], total, index) }
                     </li>
@@ -83,6 +83,7 @@ export default class PollVote extends Component {
 
 PollVote.propTypes = {
   poll: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
   voteEntry: PropTypes.func.isRequired,
   params: PropTypes.object.isRequired,
   registerListeners: PropTypes.func.isRequired,
